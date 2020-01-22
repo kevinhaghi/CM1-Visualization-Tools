@@ -265,9 +265,16 @@ def _pltsndings(fig,ax,z,var1,var2,xlab,vartit):
         plt.show()
         return
 
+def find_max_pos(var):
+    return np.where(var==var.max())
+
+def find_max(var):
+    return var.max()
+
+
 def center_figure(tkeuse,lcush,rcush):
-    #Find the lateral boundaries of the area to integrate for the Energy Budget
-    tkemax=np.where(tkeuse==tkeuse.max())
+    #Find the lateral boundaries of the area to integrate for the Energy Budget for a vector of format [z,x] where z is the vertical coordinate and x is the horizontal coordinate.
+    tkemax=find_max_pos(tkeuse)
     leftbound = int(tkemax[1]-lcush)
     rightbound = int(tkemax[1]+rcush)
     print(tkemax[1])
